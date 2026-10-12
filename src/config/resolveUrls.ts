@@ -37,8 +37,8 @@ export const resolveAppUrls = (): AppUrls => {
   }
 
   return {
-    apiBaseUrl: `${protocol}//api.${tenantSubdomain}.${baseDomain}`,
-    subscriptionFrontendUrl: `${protocol}//${tenantSubdomain}.${baseDomain}`,
+    apiBaseUrl: `${protocol}//api.erp.${tenantSubdomain}.${baseDomain}`,
+    subscriptionFrontendUrl: `${protocol}//${tenantSubdomain}.erp.${baseDomain}`,
   };
 };
 
