@@ -1,6 +1,6 @@
-import { ENV } from "./env";
+import { SUB_BASE } from "./resolveUrls";
 
-export const SUB_BASE = ENV.apiBaseUrl;
+export { SUB_BASE };
 
 export const API = {
   loginApi: {

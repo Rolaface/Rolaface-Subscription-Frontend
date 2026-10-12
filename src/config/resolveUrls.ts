@@ -28,7 +28,7 @@ export const resolveAppUrls = (): AppUrls => {
     return fallbacks;
   }
 
-  const tenantSubdomain = hostSegments[0]; 
+  const tenantSubdomain = hostSegments[0] ?? "";
   const baseDomain = hostSegments.slice(-2).join("."); 
   
   const isValidTenant = /^[a-z0-9-]+$/i.test(tenantSubdomain);
