@@ -1,8 +1,8 @@
 import type { AxiosResponse } from "axios";
 import { createAxiosInstance } from "./axiosInstance";
-import { ERP_BASE, API } from "../config/api";
+import { SUB_BASE, API } from "../config/api";
 
-const api = createAxiosInstance(ERP_BASE);
+const api = createAxiosInstance(SUB_BASE);
 
 
 export interface AuthUser {

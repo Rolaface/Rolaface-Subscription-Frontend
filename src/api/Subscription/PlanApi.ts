@@ -1,8 +1,8 @@
 import { createAxiosInstance } from "../axiosInstance";
-import { API, ERP_BASE } from "../../config/api";
+import { API, SUB_BASE } from "../../config/api";
 import type { ModuleDef, ProductDef, SubModuleDef } from "../../types/plan.types";
 
-const api = createAxiosInstance(ERP_BASE);
+const api = createAxiosInstance(SUB_BASE);
 
 interface RawProduct {
   name?: string;

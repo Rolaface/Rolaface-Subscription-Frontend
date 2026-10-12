@@ -1,8 +1,8 @@
 import type { AxiosResponse } from "axios";
 import { createAxiosInstance } from "./axiosInstance";
-import { API, ERP_BASE } from "../config/api";
+import { API, SUB_BASE } from "../config/api";
 
-const api = createAxiosInstance(ERP_BASE);
+const api = createAxiosInstance(SUB_BASE);
 
 export interface CurrencyApiItem {
   name: string;

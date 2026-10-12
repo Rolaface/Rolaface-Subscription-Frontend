@@ -1,9 +1,9 @@
 import type { AxiosResponse } from "axios";
 import { createAxiosInstance } from "./axiosInstance";
-import { API, ERP_BASE } from "../config/api";
+import { API, SUB_BASE } from "../config/api";
 import type { PlanPayload, PlanStatusPayload, PlanUpdatePayload } from "../types/plan.types";
 
-const api = createAxiosInstance(ERP_BASE);
+const api = createAxiosInstance(SUB_BASE);
 export const PlanAPI = API.plans;
 
 export async function createPlan(payload: PlanPayload): Promise<any> {

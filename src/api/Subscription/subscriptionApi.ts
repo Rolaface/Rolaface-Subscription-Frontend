@@ -1,6 +1,6 @@
 import type { AxiosResponse } from "axios";
 import { createAxiosInstance } from "../axiosInstance";
-import { API, ERP_BASE } from "../../config/api";
+import { API, SUB_BASE } from "../../config/api";
 import type {
   GetAllSubscriptionsResponse,
   SubscriptionCancelPayload,
@@ -9,7 +9,7 @@ import type {
 } from "../../types/subscription.types";
 
 
-const api = createAxiosInstance(ERP_BASE);
+const api = createAxiosInstance(SUB_BASE);
 export const SubscriptionAPI = API.subscriptions;
 
 export async function getAllSubscriptions(

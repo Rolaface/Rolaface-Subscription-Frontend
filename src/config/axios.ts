@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { ERP_BASE } from "./api";
+import { SUB_BASE } from "./api";
 
 const apiClient = axios.create({
-  baseURL: ERP_BASE,
+  baseURL: SUB_BASE,
   headers: {
     "Content-Type": "application/json",
   },
