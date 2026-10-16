@@ -6,7 +6,13 @@ import AddressBlock from "./AddressBlock";
 import { useCustomerForm } from "../../hooks/useCustomerForm";
 import { useModalStore } from "../../store/modalstore";
 import { useCurrencySelect, withSelectOnFocus } from "../../hooks/uselookupoptions";
-import { CUSTOMER_TABS, mapDetailToForm, sanitizeCode, sanitizeDigits } from "../../views/Customer/customer.constants";
+import {
+  CUSTOMER_TABS,
+  mapDetailToForm,
+  sanitizeCode,
+  sanitizeDigits,
+  stripProtocol,
+} from "../../views/Customer/customer.constants";
 import type { CustomerDetail, CustomerTab } from "../../types/customer.types";
 
 const TAB_ICONS: Record<CustomerTab, Icon> = {
@@ -143,11 +149,15 @@ const CustomerModal = ({ customer, modalId, readOnly = false, onClose }: Props) 
                 />
               </Group>
             </Input.Wrapper>
-            <TextInput
+                       <TextInput
               label="Site Url"
               withAsterisk
-              placeholder="https://example.com"
+              placeholder="example.com"
+              leftSection="https://"
+              leftSectionWidth={64}
+              leftSectionPointerEvents="none"
               {...form.getInputProps("website")}
+              onChange={(e) => form.setFieldValue("website", stripProtocol(e.currentTarget.value))}
               disabled={readOnly}
             />
           </Box>

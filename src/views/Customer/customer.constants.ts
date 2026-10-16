@@ -94,6 +94,9 @@ export const sanitizeCode = (value: string) => {
 
 export const sanitizeDigits = (value: string) => value.replace(/\D/g, "").slice(0, 14);
 
+export const stripProtocol = (v: string) => v.replace(/^\s*https?:\/\//i, "").trim();
+export const withHttps = (v: string) => (v.trim() ? `https://${stripProtocol(v)}` : "");
+
 const fromApiAddress = (a?: CustomerAddress): AddressValues => ({
   line1: a?.line1 ?? "",
   line2: a?.line2 ?? "",
@@ -143,7 +146,7 @@ export const mapDetailToForm = (d: CustomerDetail): CustomerFormValues => {
     mobileNumber: mob.number,
     email: contact?.email ?? d.email ?? "",
     sameAsBilling: isEmptyAddress(shipping) || sameAddress(billing, shipping),
-    website: d.website ?? "",
+       website: stripProtocol(d.website ?? ""),
     billing,
     shipping,
   };
@@ -193,7 +196,7 @@ export const buildCreatePayload = (v: CustomerFormValues): Record<string, unknow
   displayName: v.name.trim(),
   currency: v.currency,
   contacts: [newPrimaryContact(v)],
-  website: v.website.trim(),
+    website: withHttps(v.website),
   addresses: [
     toApiAddress("Billing", v.billing, undefined, true),
     toApiAddress("Shipping", v.sameAsBilling ? v.billing : v.shipping),
@@ -236,7 +239,7 @@ export const buildUpdatePayload = (v: CustomerFormValues, original: CustomerDeta
   return {
     name: v.name.trim(),
     currency: v.currency,
-    website: v.website.trim(),
+       website: withHttps(v.website),
     contacts,
     addresses,
   };
